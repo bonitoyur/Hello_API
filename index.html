@@ -1,323 +1,185 @@
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twitter Bootstrap jQuery Calendar component</title>
 
-  <style>
-  body {
-  font-family: Tahoma;
-}
-header {
-  text-align: center;
-}
-#calendar {
-  width: 100%;
-}
-#calendar a {
-  color: #8e352e;
-  text-decoration: none;
-}
-#calendar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-#calendar li {
-  display: block;
-  float: left;
-  width: 14.342%;
-  padding: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  margin-right: -1px;
-  margin-bottom: -1px;
-}
-#calendar ul.weekdays {
-  height: 40px;
-  background: #8e352e;
-}
-#calendar ul.weekdays li {
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 20px;
-  border: none !important;
-  padding: 10px 6px;
-  color: #fff;
-  font-size: 13px;
-}
-#calendar .days li {
-  height: 180px;
-}
-#calendar .days li:hover {
-  background: #d3d3d3;
-}
-#calendar .date {
-  text-align: center;
-  margin-bottom: 5px;
-  padding: 4px;
-  background: #333;
-  color: #fff;
-  width: 20px;
-  border-radius: 50%;
-  float: right;
-}
-#calendar .event {
-  clear: both;
-  display: block;
-  font-size: 13px;
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 40px;
-  margin-bottom: 5px;
-  line-height: 14px;
-  background: #e4f2f2;
-  border: 1px solid #b5dbdc;
-  color: #009aaf;
-  text-decoration: none;
-}
-#calendar .event-desc {
-  color: #666;
-  margin: 3px 0 7px 0;
-  text-decoration: none;
-}
-#calendar .other-month {
-  background: #f5f5f5;
-  color: #666;
-}
-/* ============================
-                Mobile Responsiveness
-   ============================*/
-@media (max-width: 768px) {
-  #calendar .weekdays, #calendar .other-month {
-    display: none;
-  }
-  #calendar li {
-    height: auto !important;
-    border: 1px solid #ededed;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: -1px;
-  }
-  #calendar .date {
-    float: none;
-  }
-}
-</style>
- </head>
- <body>
-  <div id="calendar-wrap">
-            <header>
-                <h1>August 2014</h1>
-            </header>
-            <div id="calendar">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <!-- Days from previous month -->
-                <ul class="days">
-                    <li class="day other-month">
-                        <div class="date">27</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">28</div>
-                        <div class="event">
-                            <div class="event-desc">
-                                HTML 5 lecture with Brad Traversy from Eduonix
-                            </div>
-                            <div class="event-time">
-                                1:00pm to 3:00pm
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">29</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">30</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">31</div>
-                    </li>
-                    <!-- Days in current month -->
-                    <li class="day">
-                        <div class="date">1</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">2</div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Career development @ Community College room #402
-                            </div>
-                            <div class="event-time">
-                                2:00pm to 5:00pm
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                    <!-- Row #2 -->
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">3</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">4</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">5</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">6</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">7</div>
-                        <div class="event">
-                            <div class="event-desc">
-                                운도오오오오옹
-                            </div>
-                            <div class="event-time">
-                                6:00pm to 8:30pm
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">8</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">9</div>
-                    </li>
-                </ul>
-                    <!-- Row #3 -->
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">10</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">11</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">12</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">13</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">14</div><div class="event">
-                            <div class="event-desc">
-                                운동운동운동
-                            </div>
-                            <div class="event-time">
-                                1:00pm to 3:00pm
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">15</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">16</div>
-                    </li>
-                </ul>
-                    <!-- Row #4 -->
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">17</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">18</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">19</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">20</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">21</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">22</div>
-                        <div class="event">
-                            <div class="event-desc">
-                                운동하자아아아아아
-                            </div>
-                            <div class="event-time">
-                                9:00am to 12:00pm
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">23</div>
-                    </li>
-                </ul>
-                        <!-- Row #5 -->
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">24</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">25</div>
-                        <div class="event">
-                            <div class="event-desc">
-                                단헐적간식!!!
-                            </div>
-                            <div class="event-time">
-                                1:00pm to 3:00pm
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">26</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">27</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">28</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">29</div>
-                    </li>
-                    <li class="day">
-                        <div class="date">30</div>
-                    </li>
-                </ul>
-                <!-- Row #6 -->
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">31</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">1</div> <!-- Next Month -->
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">2</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">3</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">4</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">5</div>
-                    </li>
-                    <li class="day other-month">
-                        <div class="date">6</div>
-                    </li>
-                </ul>
-            </div><!-- /. calendar -->
-        </div><!-- /. wrap -->
- </body>
+	<meta name="description" content="Full view calendar component for twitter bootstrap with year, month, week, day views.">
+	<meta name="keywords" content="jQuery,Bootstrap,Calendar,HTML,CSS,JavaScript,responsive,month,week,year,day">
+	<meta name="author" content="Serhioromano">
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css">
+	<link rel="stylesheet" href="components/bootstrap2/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/calendar.css">
+
+	<style type="text/css">
+		.btn-twitter {
+			padding-left: 30px;
+			background: rgba(0, 0, 0, 0) url(https://platform.twitter.com/widgets/images/btn.27237bab4db188ca749164efd38861b0.png) -20px 6px no-repeat;
+			background-position: -20px 11px !important;
+		}
+		.btn-twitter:hover {
+			background-position:  -20px -18px !important;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="hero-unit">
+		<h1>Bootstrap Calendar Demo</h1>
+
+		<p>Bootstrap based full view calendar. Template based.</p>
+
+		<a class="btn btn-inverse" href="https://github.com/Serhioromano/bootstrap-calendar">Fork on GitHub</a>
+		<a class="btn" href="index-bs3.html">Use bootstrap 3</a>
+		<a href="https://twitter.com/serhioromano" class="btn btn-twitter" data-show-count="false" data-size="large">Follow @serhioromano</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+	</div>
+
+	<div class="page-header">
+
+		<div class="pull-right form-inline">
+			<div class="btn-group">
+				<button class="btn btn-primary" data-calendar-nav="prev"><< Prev</button>
+				<button class="btn" data-calendar-nav="today">Today</button>
+				<button class="btn btn-primary" data-calendar-nav="next">Next >></button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-warning" data-calendar-view="year">Year</button>
+				<button class="btn btn-warning active" data-calendar-view="month">Month</button>
+				<button class="btn btn-warning" data-calendar-view="week">Week</button>
+				<button class="btn btn-warning" data-calendar-view="day">Day</button>
+			</div>
+		</div>
+
+		<h3></h3>
+		<small>To see example with events navigate to march 2013</small>
+	</div>
+
+	<div class="row">
+		<div class="span9">
+			<div id="calendar"></div>
+		</div>
+		<div class="span3">
+			<div class="row-fluid">
+				<select id="first_day" class="span12">
+					<option value="" selected="selected">First day of week language-dependant</option>
+					<option value="2">First day of week is Sunday</option>
+					<option value="1">First day of week is Monday</option>
+				</select>
+				<select id="language" class="span12">
+					<option value="">Select Language (default: en-US)</option>
+					<option value="bg-BG">Bulgarian</option>
+					<option value="nl-NL">Dutch</option>
+					<option value="fr-FR">French</option>
+					<option value="de-DE">German</option>
+					<option value="el-GR">Greek</option>
+					<option value="hu-HU">Hungarian</option>
+					<option value="id-ID">Bahasa Indonesia</option>
+					<option value="it-IT">Italian</option>
+					<option value="pl-PL">Polish</option>
+					<option value="pt-BR">Portuguese (Brazil)</option>
+					<option value="ro-RO">Romania</option>
+					<option value="es-CO">Spanish (Colombia)</option>
+					<option value="es-MX">Spanish (Mexico)</option>
+					<option value="es-ES">Spanish (Spain)</option>
+					<option value="es-CL">Spanish (Chile)</option>
+					<option value="es-DO">Spanish (República Dominicana)</option>
+					<option value="ru-RU">Russian</option>
+					<option value="sk-SR">Slovak</option>
+					<option value="sv-SE">Swedish</option>
+					<option value="zh-CN">简体中文</option>
+					<option value="zh-TW">繁體中文</option>
+					<option value="ko-KR">한국어</option>
+					<option value="th-TH">Thai (Thailand)</option>
+				</select>
+				<label class="checkbox">
+					<input type="checkbox" value="#events-modal" id="events-in-modal"> Open events in modal window
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" id="format-12-hours"> 12 Hour format
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" id="show_wb" checked> Show week box
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" id="show_wbn" checked> Show week box number
+				</label>
+			</div>
+
+			<h4>Events</h4>
+			<small>This list is populated with events dynamically</small>
+			<ul id="eventlist" class="nav nav-list"></ul>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+	<br><br>
+	<a href="https://github.com/Serhioromano/bootstrap-calendar/issues" class="btn btn-block btn-info">
+		<center>
+			<span class="lead">
+				Submit an issue, ask questions or give your ideas here!<br>
+			</span>
+			<small>Please do not post your "How to ..." questions in comments. use GitHub issue tracker.</small>
+		</center>
+	</a>
+	<br><br>
+
+	<div id="disqus_thread"></div>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	<div class="modal hide fade" id="events-modal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Event</h3>
+		</div>
+		<div class="modal-body" style="height: 400px">
+		</div>
+		<div class="modal-footer">
+			<a href="#" data-dismiss="modal" class="btn">Close</a>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="components/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="components/bootstrap2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="components/jstimezonedetect/jstz.min.js"></script>
+	<script type="text/javascript" src="js/language/bg-BG.js"></script>
+	<script type="text/javascript" src="js/language/nl-NL.js"></script>
+	<script type="text/javascript" src="js/language/fr-FR.js"></script>
+	<script type="text/javascript" src="js/language/de-DE.js"></script>
+	<script type="text/javascript" src="js/language/el-GR.js"></script>
+	<script type="text/javascript" src="js/language/it-IT.js"></script>
+	<script type="text/javascript" src="js/language/hu-HU.js"></script>
+	<script type="text/javascript" src="js/language/pl-PL.js"></script>
+	<script type="text/javascript" src="js/language/pt-BR.js"></script>
+	<script type="text/javascript" src="js/language/ro-RO.js"></script>
+	<script type="text/javascript" src="js/language/es-CO.js"></script>
+	<script type="text/javascript" src="js/language/es-MX.js"></script>
+	<script type="text/javascript" src="js/language/es-ES.js"></script>
+	<script type="text/javascript" src="js/language/es-CL.js"></script>
+	<script type="text/javascript" src="js/language/es-DO.js"></script>
+	<script type="text/javascript" src="js/language/ru-RU.js"></script>
+	<script type="text/javascript" src="js/language/sk-SR.js"></script>
+	<script type="text/javascript" src="js/language/sv-SE.js"></script>
+	<script type="text/javascript" src="js/language/zh-CN.js"></script>
+	<script type="text/javascript" src="js/language/cs-CZ.js"></script>
+	<script type="text/javascript" src="js/language/ko-KR.js"></script>
+	<script type="text/javascript" src="js/language/zh-TW.js"></script>
+	<script type="text/javascript" src="js/language/id-ID.js"></script>
+	<script type="text/javascript" src="js/language/th-TH.js"></script>
+	<script type="text/javascript" src="js/calendar.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'bootstrapcalendar'; // required: replace example with your forum shortname
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+</div>
+</body>
 </html>
