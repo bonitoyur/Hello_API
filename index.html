@@ -41,7 +41,7 @@
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
 
-    document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:"+lng
+    document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:"+lng // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
 
     var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
         message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
@@ -75,7 +75,6 @@
       // 지도 중심좌표를 접속위치로 변경
       map.setCenter(locPosition);
   }
-
   </script>
 
 
@@ -112,35 +111,31 @@
   //<![CDATA[
     // // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
+
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    var coord = new kakao.maps.LatLng(lat,lng);
+    var callback = function(result, status){
+      if(status == kakao.maps.services.Satus.OK){
+        console.log(result[0].address.address_name);
+
+      }
+
+    };
+
+    geocoder.coord2Address(coord.getLng(), coord.getLat(),callbak);
+
     // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
       objectType: 'location',
-      address: '서울 금천구 가산디지털2로 179 롯데센터 8층',
+      address: '서울 금천구 가산디지털2로 179 롯데센터 8층', //  string 타입으로 공유할 위치 주소
+
       addressTitle: '롯데정보통신',
       content: {
         title: '스마트오피스팀♥︎',
         description: '스마트오피스팀 근태 테스트',
-        imageUrl: 'http://mud-kage.kakao.co.kr/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
-        link: {
-          mobileWebUrl: 'https://developers.kakao.com',
-          webUrl: 'https://developers.kakao.com'
-        }
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845
-      },
-      buttons: [
-        {
-          title: '웹으로 보기',
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com'
-          }
-        }
-      ]
+      }
     });
   //]]>
 </script>
