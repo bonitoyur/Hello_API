@@ -2,107 +2,149 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HTTPS SSL 인증서 등록 대체</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>SmartOffice Team Test</title>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="index.css">
 </head>
+
 <body>
+  <div id="map" style="width:100%;height:350px;"></div>
 
-<div id="map" style="width:100%;height:350px;"></div>
+  <p>
+    <button onclick="resizeMap()"> MAP Resize </button>
+    <button onclick="relayout()">relayout 호출 </button>
+  </p>
 
-<p>
-  <button onclick="resizeMap()"> MAP Resize </button>
-  <button onclick="relayout()">relayout 호출 </button>
-</p>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9"></script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9"></script>
+  <div id="msg"></div>
 
-
-<div id="msg"></div>
-<script type="text/javascript">
-
-function errorCallback(error)
-{
-  alert(error.message);
-}
-
-  if (!!navigator.geolocation)
+  <script type="text/javascript">
+  function errorCallback(error)
   {
-    navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
-  }
-  else
-  {
-    alert("이 브라우저는 Geolocation를 지원하지 않습니다");
+    alert(error.message);
   }
 
-function successCallback(position)
-{
-  var lat = position.coords.latitude;
-  var lng = position.coords.longitude;
+    if (!!navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+    }
+    else
+    {
+      alert("이 브라우저는 Geolocation를 지원하지 않습니다");
+    }
 
-  document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:"+lng
+  function successCallback(position)
+  {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
 
-  var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
-      message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
+    document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:"+lng
 
-  // 마커와 인포윈도우를 표시
-  displayMarker(locPosition, message);
+    var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+        message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
 
-}
+    // 마커와 인포윈도우를 표시
+    displayMarker(locPosition, message);
 
-// 지도에 마커와 인포윈도우를 표시하는 함수
-function displayMarker(locPosition, message) {
+  }
 
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: locPosition
+  // 지도에 마커와 인포윈도우를 표시하는 함수
+  function displayMarker(locPosition, message) {
+
+      // 마커를 생성합니다
+      var marker = new kakao.maps.Marker({
+          map: map,
+          position: locPosition
+      });
+
+      var iwContent = message, // 인포윈도우에 표시할 내용
+          iwRemoveable = true;
+
+      // 인포윈도우를 생성합니다
+      var infowindow = new kakao.maps.InfoWindow({
+          content : iwContent,
+          removable : iwRemoveable
+      });
+
+      // 인포윈도우를 마커위에 표시
+      infowindow.open(map, marker);
+
+      // 지도 중심좌표를 접속위치로 변경
+      map.setCenter(locPosition);
+  }
+
+  </script>
+
+
+  <script>
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+      mapOption = {
+          center: new kakao.maps.LatLng(37.4838722, 126.8769395), // 지도의 중심좌표
+          level: 10 // 지도의 확대 레벨
+      };
+
+
+  var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성
+
+  //지도를 표시하는 div 크기 변경 함수
+  function resizeMap(){
+    var mapContainer = document.getElementById('map');
+    mapContainer.style.width='650px';
+    mapContainer.style.height='650px';
+
+  }
+
+  function relayout(){
+    //지도를 표ㅣ하는 div 크기를 변경한 이후 지도가 정상적으로 표출 되지 않을 수도 있음
+    // 크기를 변경한 이후에는 반드시 map.relayout 함수를 호출 해야 함
+    // window resize 이벤트에 의한 크기 변경은 mpa.relayout 함수가 자동으로 호출 됨
+
+      map.relayout();
+  }
+  </script>
+  <a id="kakao-link-btn" href="javascript:;">
+<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+</a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'location',
+      address: '경기 성남시 분당구 판교역로 235 에이치스퀘어 N동 8층',
+      addressTitle: '카카오 판교오피스 카페톡',
+      content: {
+        title: '신메뉴 출시♥︎ 체리블라썸라떼',
+        description: '이번 주는 체리블라썸라떼 1+1',
+        imageUrl: 'http://mud-kage.kakao.co.kr/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com'
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com'
+          }
+        }
+      ]
     });
-
-    var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
-
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content : iwContent,
-        removable : iwRemoveable
-    });
-
-    // 인포윈도우를 마커위에 표시
-    infowindow.open(map, marker);
-
-    // 지도 중심좌표를 접속위치로 변경
-    map.setCenter(locPosition);
-}
-
+  //]]>
 </script>
 
-
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new kakao.maps.LatLng(37.4838722, 126.8769395), // 지도의 중심좌표
-        level: 10 // 지도의 확대 레벨
-    };
-
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성
-
-//지도를 표시하는 div 크기 변경 함수
-function resizeMap(){
-  var mapContainer = document.getElementById('map');
-  mapContainer.style.width='650px';
-  mapContainer.style.height='650px';
-
-}
-
-function relayout(){
-  //지도를 표ㅣ하는 div 크기를 변경한 이후 지도가 정상적으로 표출 되지 않을 수도 있음
-  // 크기를 변경한 이후에는 반드시 map.relayout 함수를 호출 해야 함
-  // window resize 이벤트에 의한 크기 변경은 mpa.relayout 함수가 자동으로 호출 됨
-
-    map.relayout();
-}
-</script>
-<img src="LDCC.png"  width="100%">
+  <img src="LDCC.png"  width="100%">
 </body>
 </html>
