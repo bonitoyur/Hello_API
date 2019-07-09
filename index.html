@@ -124,7 +124,7 @@
     };
 
     geocoder.coord2Address(coord.getLng(), coord.getLat(),callbak);
-
+    document.getElementById("msg").innerHTML = geocoder.coord2Address(coord.getLng(), coord.getLat(),callbak)
     // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
