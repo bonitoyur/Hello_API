@@ -164,11 +164,12 @@
     // // 사용할 앱의 JavaScript 키를 설정
     Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
 
-    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    // // 카카오링크 버튼을 생성. 처음 한번만 호출하면 됨.
+    var hereIam = new String("'서울 종로구 사직로1라길 28'");
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
       objectType: 'location',
-      address: '서울 금천구 가산디지털2로 179 롯데센터 8층', //  string 타입으로 공유할 위치 주소
+      address: hereIam, //  string 타입으로 공유할 위치 주소
       addressTitle: '롯데정보통신',
       content: {
         title: '스마트오피스팀♥︎',
