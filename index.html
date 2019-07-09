@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-    <title>SmartOffice Team Test</title>
-    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="index.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+  <title>SmartOffice Team Test</title>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -22,51 +23,58 @@
   <div id="msg"></div>
 
   <script type="text/javascript">
-  function errorCallback(error)
-  {
-    alert(error.message);
-  }
-
-    if (!!navigator.geolocation)
-    {
-      navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+    function errorCallback(error) {
+      alert(error.message);
     }
-    else
-    {
+
+    if (!!navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
       alert("이 브라우저는 Geolocation를 지원하지 않습니다");
     }
 
-  function successCallback(position)
-  {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
+    function successCallback(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
 
-    document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:"+lng // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
+      document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:" + lng // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
 
-    var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+
+      var coord = new kakao.maps.LatLng(lat, lng);
+      var callback = function(result, status) {
+        if (status == kakao.maps.services.Satus.OK) {
+          console.log(result[0].address.address_name);
+
+        }
+
+      };
+
+      geocoder.coord2Address(coord.getLng(), coord.getLat(), callbak);
+      document.getElementById("msg").innerHTML = geocoder.coord2Address(coord.getLng(), coord.getLat(), callbak)
+      var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
         message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
 
-    // 마커와 인포윈도우를 표시
-    displayMarker(locPosition, message);
+      // 마커와 인포윈도우를 표시
+      displayMarker(locPosition, message);
 
-  }
+    }
 
-  // 지도에 마커와 인포윈도우를 표시하는 함수
-  function displayMarker(locPosition, message) {
+    // 지도에 마커와 인포윈도우를 표시하는 함수
+    function displayMarker(locPosition, message) {
 
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
-          map: map,
-          position: locPosition
+        map: map,
+        position: locPosition
       });
 
       var iwContent = message, // 인포윈도우에 표시할 내용
-          iwRemoveable = true;
+        iwRemoveable = true;
 
       // 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
-          content : iwContent,
-          removable : iwRemoveable
+        content: iwContent,
+        removable: iwRemoveable
       });
 
       // 인포윈도우를 마커위에 표시
@@ -74,57 +82,46 @@
 
       // 지도 중심좌표를 접속위치로 변경
       map.setCenter(locPosition);
-  }
+    }
   </script>
 
 
   <script>
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
       mapOption = {
-          center: new kakao.maps.LatLng(37.4838722, 126.8769395), // 지도의 중심좌표
-          level: 10 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.4838722, 126.8769395), // 지도의 중심좌표
+        level: 10 // 지도의 확대 레벨
       };
 
 
-  var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성
 
-  //지도를 표시하는 div 크기 변경 함수
-  function resizeMap(){
-    var mapContainer = document.getElementById('map');
-    mapContainer.style.width='650px';
-    mapContainer.style.height='650px';
+    //지도를 표시하는 div 크기 변경 함수
+    function resizeMap() {
+      var mapContainer = document.getElementById('map');
+      mapContainer.style.width = '650px';
+      mapContainer.style.height = '650px';
 
-  }
+    }
 
-  function relayout(){
-    //지도를 표ㅣ하는 div 크기를 변경한 이후 지도가 정상적으로 표출 되지 않을 수도 있음
-    // 크기를 변경한 이후에는 반드시 map.relayout 함수를 호출 해야 함
-    // window resize 이벤트에 의한 크기 변경은 mpa.relayout 함수가 자동으로 호출 됨
+    function relayout() {
+      //지도를 표ㅣ하는 div 크기를 변경한 이후 지도가 정상적으로 표출 되지 않을 수도 있음
+      // 크기를 변경한 이후에는 반드시 map.relayout 함수를 호출 해야 함
+      // window resize 이벤트에 의한 크기 변경은 mpa.relayout 함수가 자동으로 호출 됨
 
       map.relayout();
-  }
+    }
   </script>
   <a id="kakao-link-btn" href="javascript:;">
     <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
   </a>
-<script type='text/javascript'>
-  //<![CDATA[
+  <script type='text/javascript'>
+    //<![CDATA[
     // // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
 
     var geocoder = new kakao.maps.services.Geocoder();
 
-    var coord = new kakao.maps.LatLng(lat,lng);
-    var callback = function(result, status){
-      if(status == kakao.maps.services.Satus.OK){
-        console.log(result[0].address.address_name);
-
-      }
-
-    };
-
-    geocoder.coord2Address(coord.getLng(), coord.getLat(),callbak);
-    document.getElementById("msg").innerHTML = geocoder.coord2Address(coord.getLng(), coord.getLat(),callbak)
     // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
@@ -137,9 +134,10 @@
         description: '스마트오피스팀 근태 테스트',
       }
     });
-  //]]>
-</script>
+    //]]>
+  </script>
 
-  <img src="LDCC.png"  width="100%">
+  <img src="LDCC.png" width="100%">
 </body>
+
 </html>
