@@ -8,6 +8,16 @@
   <title>SmartOffice Team Test</title>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <link type="text/css" rel="stylesheet" href="index.css">
+
+  <style>
+    .map_wrap {position:relative;width:100%;height:350px;}
+    .title {font-weight:bold;display:block;}
+    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
+
+
 </head>
 
 <body>
@@ -28,7 +38,7 @@
       alert(error.message);
     }
 
-    if (!!navigator.geolocation) {
+    if (!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
       alert("이 브라우저는 Geolocation를 지원하지 않습니다");
@@ -77,17 +87,28 @@
 
   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9&libraries=services,clusterer">
     //위도 경도를 주소로 변환
-    var geocoder = new kakao.maps.services.Geocoder();
+    var geocoder = new kakao.maps.services.Geocoder(); //주소 - 좌표 변환 객체 생성
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo); // 현재 지도 중심 좌표로 주소를 검색해서 지도 좌측 상단에 표시
 
-    var coord = new kakao.maps.LatLng(lat, lng);
-    var callback = function(result, status) {
-      if (status == kakao.maps.services.Satus.OK) {
-        console.log(result[0].address.address_name);
-        document.write(result[0].address.address_name);
-      }
-    };
+    function serachDetailAddrFromCords(coords,callback){
+      //좌표로 법정동 상세 주소 정보 요청
+      geocoder.coord2Address(cooords.getLng()),coords.getLat(),callback);
 
-    geocoder.coord2Address(coord.getLng(), coord.getLat(), callbak);
+      // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수
+    function displayCenterInfo(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var infoDiv = document.getElementById('centerAddr');
+
+            for(var i = 0; i < result.length; i++) {
+                // 행정동의 region_type 값은 'H' 이므로
+                if (result[i].region_type === 'H') {
+                    infoDiv.innerHTML = result[i].address_name;
+                    break;
+                }
+            }
+        }
+    }
+    }
 
   </script>
 
