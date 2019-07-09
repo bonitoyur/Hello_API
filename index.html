@@ -38,7 +38,7 @@
       alert(error.message);
     }
 
-    if (!navigator.geolocation) {
+    if (!!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
       alert("이 브라우저는 Geolocation를 지원하지 않습니다");
