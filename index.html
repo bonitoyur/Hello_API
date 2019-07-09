@@ -117,46 +117,46 @@
   <script>
     var geocoder = new kakao.maps.services.Geocoder(); // 위경도>주소 변환 객체 생성
 
-    searchAddrFromCoords(map.getCenter(),displayCenterInfo); // 현재 지도 중ㅇ심좌표로 주소를 검색해서 지도 좌측 상단에 표시
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo); // 현재 지도 중ㅇ심좌표로 주소를 검색해서 지도 좌측 상단에 표시
 
     kakao.maps.event.addListener(map, 'idle', function() {
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-});
+      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    });
 
-function searchAddrFromCoords(coords, callback) {
-    // 좌표로 행정동 주소 정보를 요청
-    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-}
+    function searchAddrFromCoords(coords, callback) {
+      // 좌표로 행정동 주소 정보를 요청
+      geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+    }
 
-function searchDetailAddrFromCoords(coords, callback) {
-    // 좌표로 법정동 상세 주소 정보를 요청
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
+    function searchDetailAddrFromCoords(coords, callback) {
+      // 좌표로 법정동 상세 주소 정보를 요청
+      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    }
 
-// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수
-function displayCenterInfo(result, status) {
-    if (status === kakao.maps.services.Status.OK) {
+    // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수
+    function displayCenterInfo(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
 
-        for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                break;
-            }
+        for (var i = 0; i < result.length; i++) {
+          // 행정동의 region_type 값은 'H' 이므로
+          if (result[i].region_type === 'H') {
+            infoDiv.innerHTML = result[i].address_name;
+            break;
+          }
         }
+      }
     }
-  }
 
+  </script>
+    <a id = "kakao-link-btn" href = "javascript:;" >
+      <img src = "//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" / >
+      </a>
 
-  <a id="kakao-link-btn" href="javascript:;">
-    <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-  </a>
-
-  <script type='text/javascript'>
-    //<![CDATA[
-    // // 사용할 앱의 JavaScript 키를 설정
-    Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
+      <script type = 'text/javascript' >
+      //<![CDATA[
+      // // 사용할 앱의 JavaScript 키를 설정
+      Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
 
     // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.createDefaultButton({
