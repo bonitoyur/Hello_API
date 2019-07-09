@@ -18,14 +18,17 @@
     <button onclick="relayout()">relayout 호출 </button>
   </p>
 
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9"></script> //지도 생성을 위한 라이브러리 추가
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9&libraries=services">
+    // geocoder 사용하기 위한 라이브러리 추가
+    <
+    div id = "msg" > < /div>
 
-  <div id="msg"></div>
-
-  <script type="text/javascript">
-    function errorCallback(error) {
-      alert(error.message);
-    }
+      <
+      script type = "text/javascript" >
+      function errorCallback(error) {
+        alert(error.message);
+      }
 
     if (!!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
