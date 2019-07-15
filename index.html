@@ -152,7 +152,7 @@
    }
 
    // 주소-좌표 변환 객체를 생성
-   var geocoder = new kakao.maps.services.Geocoder(); // 여기서 오류가 뜹니다.
+   var geocoder = new kakao.maps.services.Geocoder(lat, lng); // 여기서 오류가 뜹니다.
    // 오류 내용:  Uncaught TypeError: Cannot read property 'Geocoder' of undefined
 
    function searchDetailAddrFromCoords(coords, callback) {
