@@ -118,10 +118,10 @@
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
 
-      document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:" + lng // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
+      document.getElementById("msg").innerHTML = "Latitude_위도" + lat + "Longitudea_경도:" + lng // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
 
       var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
-        message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
+        message = '<div style="padding:5px;">Here!!!!!!</div>'; // 인포윈도우에 표시될 내용
 
       // 마커와 인포윈도우를 표시
       displayMarker(locPosition, message);
