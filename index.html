@@ -155,6 +155,7 @@
     }
   </script>
 -->
+
   <a id="kakao-link-btn" href="javascript:;">
       <img src = "//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" / >
   </a>
@@ -224,6 +225,14 @@ function displayCenterInfo(result, status) {
     //<![CDATA[
     // // 사용할 앱의 JavaScript 키를 설정d
     Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 10 // 지도의 확대 레벨
+      };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성
+
 
     //var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
     function errorCallback(error) {
