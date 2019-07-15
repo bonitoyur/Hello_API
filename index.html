@@ -226,6 +226,10 @@ function displayCenterInfo(result, status) {
     Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
 
     //var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+    function errorCallback(error) {
+      alert(error.message);
+    }
+    
     if (!!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
