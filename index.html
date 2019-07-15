@@ -229,7 +229,7 @@ function displayCenterInfo(result, status) {
     function errorCallback(error) {
       alert(error.message);
     }
-    
+
     if (!!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
@@ -244,12 +244,10 @@ function displayCenterInfo(result, status) {
 
       var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
         message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용
-
-      // 마커와 인포윈도우를 표시
-      displayMarker(locPosition, message);
-
     }
 
+    // 주소-좌표 변환 객체를 생성
+    var geocoder = new kakao.maps.services.Geocoder();
 
     function searchDetailAddrFromCoords(coords, callback) {
         // 좌표로 법정동 상세 주소 정보를 요청합니다
