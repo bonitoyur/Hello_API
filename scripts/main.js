@@ -1,14 +1,13 @@
-
 // Image switcher code
 var myImage = document.querySelector('img');
 
 myImage.onclick = function() {
-    var mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/firefox-icon.png') {
-      myImage.setAttribute ('src','images/LDCC.png');
-    } else {
-      myImage.setAttribute ('src','images/ex2.jpg');
-    }
+  var mySrc = myImage.getAttribute('src');
+  if (mySrc === 'images/firefox-icon.png') {
+    myImage.setAttribute('src', 'images/LDCC.png');
+  } else {
+    myImage.setAttribute('src', 'images/ex2.jpg');
+  }
 }
 
 var myButton = document.querySelector('button');
@@ -20,7 +19,7 @@ function setUserName() {
   myHeading.innerHTML = 'Mozilla is cool, ' + myName;
 }
 
-if(!localStorage.getItem('name')) {
+if (!localStorage.getItem('name')) {
   setUserName();
 } else {
   var storedName = localStorage.getItem('name');
