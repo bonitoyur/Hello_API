@@ -1,14 +1,17 @@
 // Image switcher code
+
 var myImage = document.querySelector('img');
 
 myImage.onclick = function() {
   var mySrc = myImage.getAttribute('src');
-  if (mySrc === 'images/ex_img.png') {
-    myImage.setAttribute('src', 'images/LDCC.png');
+  if(mySrc === 'images/firefox-icon.png') {
+    myImage.setAttribute ('src','images/LDCC.png');
   } else {
-    myImage.setAttribute('src', 'images/ex2.jpg');
+    myImage.setAttribute ('src','images/ex_img.png');
   }
 }
+
+// Personalized welcome message code
 
 var myButton = document.querySelector('button');
 var myHeading = document.querySelector('h1');
@@ -19,7 +22,7 @@ function setUserName() {
   myHeading.innerHTML = 'Mozilla is cool, ' + myName;
 }
 
-if (!localStorage.getItem('name')) {
+if(!localStorage.getItem('name')) {
   setUserName();
 } else {
   var storedName = localStorage.getItem('name');
