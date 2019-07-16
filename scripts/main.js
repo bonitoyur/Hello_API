@@ -3,7 +3,7 @@ var myImage = document.querySelector('img');
 
 myImage.onclick = function() {
   var mySrc = myImage.getAttribute('src');
-  if (mySrc === 'images/firefox-icon.png') {
+  if (mySrc === 'images/ex_img.png') {
     myImage.setAttribute('src', 'images/LDCC.png');
   } else {
     myImage.setAttribute('src', 'images/ex2.jpg');
