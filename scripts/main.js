@@ -10,7 +10,7 @@ myImage.onclick = function() {
     myImage.setAttribute ('src','img/jeju.jpg');
   }
 }
-//sdfddd
+//sdㄴㄴ
 // Personalized welcome message code
 
 var myButton = document.querySelector('button');
