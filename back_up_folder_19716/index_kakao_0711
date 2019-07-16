@@ -248,7 +248,7 @@ function displayCenterInfo(result, status) {
     var hereIam = new String("'서울 종로구 사직로1라길 28'");
     //  var hereIam = new String ("dd");
       //hereIam = gecorder;
-//fe
+
 
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
