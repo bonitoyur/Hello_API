@@ -4,10 +4,10 @@ var myImage = document.querySelector('img');
 
 myImage.onclick = function() {
   var mySrc = myImage.getAttribute('src');
-  if(mySrc === 'img/ex_img.jpg') {
+  if(mySrc === 'img/jeju.jpg') {
     myImage.setAttribute ('src','img/LDCC.png');
   } else {
-    myImage.setAttribute ('src','img/ex_img.jpg');
+    myImage.setAttribute ('src','img/jeju.jpg');
   }
 }
 //sdfddd
