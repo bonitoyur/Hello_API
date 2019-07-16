@@ -10,7 +10,7 @@ myImage.onclick = function() {
     myImage.setAttribute ('src','img/ex_img.jpg');
   }
 }
-//sdf
+//sdfddd
 // Personalized welcome message code
 
 var myButton = document.querySelector('button');
