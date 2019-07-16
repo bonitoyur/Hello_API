@@ -7,7 +7,7 @@ myImage.onclick = function() {
   if(mySrc === 'images/firefox-icon.png') {
     myImage.setAttribute ('src','images/LDCC.png');
   } else {
-    myImage.setAttribute ('src','images/ex_img.png');
+    myImage.setAttribute ('src','images/ex_img.JPG');
   }
 }
 
