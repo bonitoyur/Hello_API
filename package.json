@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Rainbow-CPaaS/Rainbow-Web-SDK-Samples#readme",
   "dependencies": {
+    "@angular/cli": "^8.1.1",
     "rainbow-web-sdk": "^1.58.0"
   },
   "devDependencies": {
