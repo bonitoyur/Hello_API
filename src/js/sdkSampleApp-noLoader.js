@@ -22,7 +22,7 @@ sample.controller("sampleController", [
         var onLoaded = function onLoaded() {
             console.log("[DEMO] :: Rainbow SDK has been loaded!");
 
-            sdk.initialize(1ae39ba0a2e711e9b93dfdf8eeffd7b5, gYMJXlPe7KxDWHJEEeDlSjYPsbFKVEDdUScis44RSf1L3Y4JAuom3Tz1AkGBfzdL).then(function() {
+            sdk.initialize('1ae39ba0a2e711e9b93dfdf8eeffd7b5', 'gYMJXlPe7KxDWHJEEeDlSjYPsbFKVEDdUScis44RSf1L3Y4JAuom3Tz1AkGBfzdL').then(function() {
                 console.log("[DEMO] :: Rainbow SDK is initialized!");
             }).catch(function() {
                 console.log("[DEMO] :: Something went wrong with the SDK...");
