@@ -94,6 +94,12 @@
   <div id="msg"></div>
   <div id="map" style="width:100%;"></div>
 
+
+  <a id="kakao-link-btn" href="javascript:;">
+      <img src = "//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" / >
+  </a>
+
+
   <!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9"></script> -->
   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9&libraries=services"></script>
   <script>
@@ -135,9 +141,39 @@
           alert(result[0].address.address_name)
 
         }
+
+
+        Kakao.init('5857f5ba21a2ffc0a6dafeb4982633c9');
+
+        //var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+
+
+
+        // // 카카오링크 버튼을 생성. 처음 한번만 호출하면 됨.
+        var hereIam = new String("'서울 종로구 사직로1라길 28'");
+        //  var hereIam = new String ("dd");
+        //hereIam = gecorder;
+
+
+        Kakao.Link.createDefaultButton({
+          container: '#kakao-link-btn',
+          objectType: 'location',
+          address: hereIam, //  string 타입으로 공유할 위치 주소
+          addressTitle: '♥︎♥︎',
+          content: {
+            title: '♥︎',
+            description: '♥︎♥︎♥︎♥︎',
+            imageUrl: 'http://mud-kage.kakao.co.kr/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com'
+            }
+          }
+        });
+
+
       };
       geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-
     }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수
@@ -168,9 +204,7 @@
   </script>
 
 
-  <a id="kakao-link-btn" href="javascript:;">
-      <img src = "//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" / >
-  </a>
+
 
 
 
@@ -250,6 +284,7 @@
 
 -->
 
+<!--
   <script>
     //<![CDATA[
     // // 사용할 앱의 JavaScript 키를 설정d
@@ -282,6 +317,8 @@
     });
     //]]>
   </script>
+
+-->
 
   <!--
   <img src="LDCC.png" width="100%">
