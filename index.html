@@ -15,5 +15,39 @@
     </head>
     <body>
         <h1>My First Rainbow Application</h1>
+
+        <script>
+
+           /* Bootstrap the SDK */
+           angular.bootstrap(document, ["sdk"]).get("rainbowSDK");
+
+           /* Callback for handling the event 'RAINBOW_ONREADY' */
+           var onReady = function onReady() {
+               // Do something with the SDK is ready (e.g. user signed in)
+               ...
+           };
+
+           var onLoaded = function onLoaded() {
+
+               rainbowSDK.initialize("<1ae39ba0a2e711e9b93dfdf8eeffd7b5>", "<gYMJXlPe7KxDWHJEEeDlSjYPsbFKVEDdUScis44RSf1L3Y4JAuom3Tz1AkGBfzdL>").then(function() {
+                   // Do something when the SDK is initialized
+                   ...
+               }).catch(function() {
+                   // Do something if there is an issue in the initialization of the SDK
+                   ...
+               });
+           };
+
+           /* Listen to the SDK event RAINBOW_ONREADY */
+           $(document).on(rainbowSDK.RAINBOW_ONREADY, onReady);
+
+           /* Listen to the SDK event RAINBOW_ONLOADED */
+           $(document).on(rainbowSDK.RAINBOW_ONLOADED, onLoaded);
+
+           /* Manually load the SDK */
+           rainbowSDK.load();
+       </script>
+
+
     </body>
 </html>
