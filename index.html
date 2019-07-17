@@ -154,7 +154,9 @@
       map.setCenter(locPosition);
     }
 
-
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    
     var geocoder = new kakao.maps.services.Geocoder();
     var coord = new kakao.maps.LatLng(lat, lng);
 
