@@ -155,6 +155,23 @@
     }
 
 
+    var geocoder = new kakao.maps.services.Geocoder();
+    var coord = new kakao.maps.LatLng(lat, lng);
+
+    var callback = function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        console.log('그런 너를 마주칠까 ' + result[0].address.address_name + '을 못가');
+        document.getElementById("msg").innerHTML = result[0].address.address_name
+        alert(result[0].address.address_name)
+
+      }
+    };
+    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+
+
+
+  </script>
+
 
   <a id="kakao-link-btn" href="javascript:;">
       <img src = "//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" / >
@@ -162,7 +179,7 @@
 
 
 
-
+  <!--<script>
     var geocoder = new kakao.maps.services.Geocoder();
     var coord = new kakao.maps.LatLng(lat, lng);
 
@@ -176,6 +193,7 @@
     };
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
   </script>
+-->
 
 <!--
   <script>
