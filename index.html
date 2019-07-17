@@ -135,7 +135,6 @@
 
       var callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          console.log('그런 너를 마주칠까 ' + result[0].address.address_name + '을 못가');
           document.getElementById("msg").innerHTML = "Latitude_위도" + lat + "<br>" + "Longitudea_경도:" + lng+ "/br" // document.getElementById('abcd').innerHTML='~~~' --> 아이디가 abc 인 HTML 문서를 가져와서 '~~~~'로 변경해라!
           document.write = result[0].address.address_name
           alert(result[0].address.address_name)
@@ -159,10 +158,10 @@
           content: {
             title: '♥︎',
             description: '♥︎♥︎♥︎♥︎',
-            imageUrl: 'http://mud-kage.kakao.co.kr/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
+            imageUrl: 'img/LDCC.png',
             link: {
-              mobileWebUrl: 'https://developers.kakao.com',
-              webUrl: 'https://developers.kakao.com'
+              mobileWebUrl: 'https://intranet.lotte.net/Login/Default.aspx?ReturnUrl=%2fDefault.aspx',
+              webUrl: 'https://intranet.lotte.net/Login/Default.aspx?ReturnUrl=%2fDefault.aspx'
             }
           }
         });
@@ -200,7 +199,7 @@
   </script>
 
 
-  <img src="LDCC.png" width="100%">
+  <img src="img/LDCC.png" height="100%">
 
 </body>
 
