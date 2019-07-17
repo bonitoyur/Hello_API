@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My First Rainbow Application</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="//cdn.jsdelivr.net/momentjs/2.15.1/moment-with-locales.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+  <script src="C:/Users/YuRR/Desktop/Hello_World_Test/node_modules/rainbow-web-sdk/dist/lib/vendors-sdk.min.js"></script>
+  <script src="C:/Users/YuRR/Desktop/Hello_World_Test/node_modules/rainbow-web-sdk/dist/lib/rainbow-sdk.min.js"></script>
+</head>
+
+<body>
+  <h1>My First Rainbow Application</h1>
+
+  <script>
+    /* Bootstrap the SDK */
+    angular.bootstrap(document, ["sdk"]).get("rainbowSDK");
+
+    /* Callback for handling the event 'RAINBOW_ONREADY'
+    var onReady = function onReady() {
+      // Do something with the SDK is ready (e.g. user signed in)
+      ...
+    };
+    */
+    var onLoaded = function onLoaded() {
+
+      rainbowSDK.initialize("<1ae39ba0a2e711e9b93dfdf8eeffd7b5>", "<gYMJXlPe7KxDWHJEEeDlSjYPsbFKVEDdUScis44RSf1L3Y4JAuom3Tz1AkGBfzdL>").then(function() {
+        // Do something when the SDK is initialized
+        ...
+      }).catch(function() {
+        // Do something if there is an issue in the initialization of the SDK
+        ...
+      });
+    };
+
+    /* Listen to the SDK event RAINBOW_ONREADY */
+    $(document).on(rainbowSDK.RAINBOW_ONREADY, onReady);
+
+    /* Listen to the SDK event RAINBOW_ONLOADED */
+    $(document).on(rainbowSDK.RAINBOW_ONLOADED, onLoaded);
+
+    /* Manually load the SDK */
+    rainbowSDK.load();
+  </script>
+
+
+</body>
+
+</html>
