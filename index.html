@@ -161,13 +161,14 @@
   </a>
 
 
-  
+
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5857f5ba21a2ffc0a6dafeb4982633c9&libraries=services">
     var geocoder = new kakao.maps.services.Geocoder();
     var coord = new kakao.maps.LatLng(37.56496830314491, 126.93990862062978);
     var callback = function(result, status) {
       if (status === kakao.maps.services.Status.OK) {
         console.log('그런 너를 마주칠까 ' + result[0].address.address_name + '을 못가');
+        document.getElementById("msg").innerHTML = result[0].address.address_name
         alert(result[0].address.address_name)
 
       }
