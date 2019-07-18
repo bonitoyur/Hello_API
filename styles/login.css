@@ -29,6 +29,13 @@ input {
     margin-top: 15px;
 }
 
+#login_button {
+      background-color : gray;
+      width : 30%;
+      height : 50px;
+
+}
+
 @keyframes lookaway-up {
     from {
         transform: rotate3d(.2, 0, -.01, 20deg);
