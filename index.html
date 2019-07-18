@@ -1,14 +1,16 @@
 <!doctype html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Ryan Login</title>
-    <link rel="stylesheet" href="styles/login.css">
+  <meta charset="utf-8">
+  <title>Ryan Login</title>
+  <link rel="stylesheet" href="styles/login.css">
 
 </head>
+
 <body>
-    <form>
-        <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <form>
+    <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243" stroke="#000" stroke-width="2.5" />
             <g class="ears">
                 <path d="M46,32 L46,30 C46,16 26,16 26,30 L26,32" fill="#e0a243" stroke="#000" stroke-width="2.5" stroke-linecap="round" transform="rotate(-10,38,24)" />
@@ -30,11 +32,17 @@
             </g>
             <path d="M40,105 C10,140 110,140 80,105 L80,105 L70,111 L60,105 L50,111 L40,105" fill="#fff" />
         </svg>
-        <input type="text" placeholder="email@domain.com">
-        <input type="password" placeholder="Password">
-    </form>
-    <script src="scripts/login.js" charset="utf-8"></script>
+    <input type="text" placeholder="email@domain.com">
+    <input type="password" placeholder="Password">
+  </form>
+  <script src="scripts/login.js" charset="utf-8"></script>
 
-    <button type="button" name="로그인"href = "find_location.html"></button>
+  <div style = "width : 30%, height:50px, background-color: gray, float:center">
+
+    <button type="button" name="로그인" onclick="location.href = './find_location.html'"></button>
+
+  </div>
+
 </body>
+
 </html>
