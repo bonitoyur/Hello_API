@@ -33,15 +33,17 @@
             <path d="M40,105 C10,140 110,140 80,105 L80,105 L70,111 L60,105 L50,111 L40,105" fill="#fff" />
         </svg>
 
-    <input type="text" placeholder="email@domain.com" name = "inputId">
+    <input type="text" placeholder="email@domain.com" name = "inputID">
     <input type="password" placeholder="Password" name = "inputPW">
 
   </form>
   <script>
     function ChkText(){
       var chkID ="";
-      chkID = document.getElementByName(inputId).value;
-      alert(chkID);
+      var chkPW ="";
+      chkID = document.getElementByName(inputID).value;
+      chkPW = document.getElementByName(inputPW).value;
+      alert(chkID, chkPW);
     }
 
   </script>
@@ -54,7 +56,7 @@
 
   <div align=right>
     <button type="button" style = "background : gray; padding : 5px; width : 30%" name="로그인2"
-     onclick=ChkText()>로그인</button>
+     onclick=ChkText()>로그인2</button>
   </div>
 </body>
 
