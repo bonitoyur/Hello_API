@@ -38,19 +38,24 @@
 
   </form>
   <script>
-    var chkID ="";
-    chkID = document.getElementByName(inputId).value;
-    alert(chkID);
+    function ChkText(){
+      var chkID ="";
+      chkID = document.getElementByName(inputId).value;
+      alert(chkID);
+    }
+
   </script>
   <script src="scripts/login.js" charset="utf-8"></script>
 
-  <script>
-
-  </script>
   <div align=center>
-    <button type="button" style = "background : gray; padding : 5px; width : 30%" name="로그인" onclick="location.href = './find_location_index.html'">로그인</button>
+    <button type="button" style = "background : gray; padding : 5px; width : 30%" name="로그인"
+     onclick="location.href = './find_location_index.html'">로그인</button>
   </div>
 
+  <div align=center>
+    <button type="button" style = "background : gray; padding : 5px; width : 30%" name="로그인2"
+     onclick=ChkText()>로그인</button>
+  </div>
 </body>
 
 </html>
