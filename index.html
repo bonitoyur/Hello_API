@@ -41,8 +41,8 @@
     function ChkText(){
       var chkID ="";
       var chkPW ="";
-      chkID = document.getElementByName(inputID).value();
-      chkPW = document.getElementByName(inputPW).value();
+      chkID = $('input[name=inputID]').val();
+      chkPW = $('input[name=inputPW]').val();
       alert(chkID, chkPW);
     }
 
